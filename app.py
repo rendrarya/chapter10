@@ -3,8 +3,17 @@ from pymongo import MongoClient
 import requests
 from datetime import datetime
 from bson import ObjectId
+from dotenv import load_dotenv
+import os
+from os.path import join, dirname
+
+dotenv_path = join(dirname(__file__), '.env')
+load_dotenv(dotenv_path)
 
 app = Flask(__name__)
+
+MONGODB_URI = os.environ.get("MONGODB_URI")
+DB_NAME =  os.environ.get("DB_NAME")
 
 client = MongoClient('mongodb+srv://test:sparta@cluster0.cyvuwe8.mongodb.net/?retryWrites=true&w=majority')
 db = client.dbsparta
